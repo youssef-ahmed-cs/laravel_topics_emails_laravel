@@ -1,0 +1,4 @@
+### DELETE request to delete a user by ID
+DELETE http://127.0.0.1:8000/api/users/1
+//Description: This request deletes the user with ID 1 from the database.
+###

@@ -1,0 +1,11 @@
+### POST request to add a new user
+POST http://127.0.0.1:8000/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Mona",
+    "email": "mona@gmail.com",
+    "password": "mona12345"
+}
+###

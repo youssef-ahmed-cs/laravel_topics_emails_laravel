@@ -1,0 +1,3 @@
+### GET request to show a specific user by ID
+GET http://127.0.0.1:8000/api/users/2
+###

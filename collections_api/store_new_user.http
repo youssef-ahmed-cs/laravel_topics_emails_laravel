@@ -1,0 +1,12 @@
+### POST request to example API to store a new user
+POST http://127.0.0.1:8000/api/store/user
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "John dDDoe",
+    "email": "hoajs@gmail.com",
+    "password": "secret123"
+}
+
+### Response

@@ -1,0 +1,10 @@
+### Update user with ID 2
+PUT http://127.0.0.1:8000/api/users/update/2
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Updated Name",
+    "email": "updated@example.com",
+    "password": "newpassword"
+}
