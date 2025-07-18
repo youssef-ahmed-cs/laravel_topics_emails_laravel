@@ -32,7 +32,7 @@ class UserController extends Controller
         ]);
 
         Mail::to($request->email)->send(new WelcomeMail($user));
-
+        //$token = auth()-user()->createToken('auth_token')->plainTextToken;
         return redirect()->route('login')->with('success', 'Registration successful. Please login.');
     }
 
@@ -59,6 +59,11 @@ class UserController extends Controller
         ]);
     }
 
+    public function getUser(){
+        $user_id = auth()->user()->id;
+        $user_data = User::findOrFail($user_id);
+        return response()->json($user_data , 200);
+    }
     public function dashboard()
     {
         return view('users.dashboard');
