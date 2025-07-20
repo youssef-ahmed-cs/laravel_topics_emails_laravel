@@ -1,4 +1,4 @@
- ----------- HTTP STATUS -----------
+                          ----------- HTTP STATUS -----------
 
 - 200 : The request was successful , and the server responded with the requested data.
 - 201 : The request was successful, and the server created a new resource.
