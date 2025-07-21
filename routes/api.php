@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
@@ -14,8 +16,6 @@ Route::post('users', [UserController::class, 'store'])
 Route::get('users',[UserController::class, 'index'])
     ->name('api.users.index');
 
-//Route::post('store/user',[UserController::class, 'store'])
-//    ->name('store.user');
 
 Route::get('users/{id}',[UserController::class, 'show'])
     ->name('api.users.show');
@@ -27,20 +27,26 @@ Route::put('users/update/{id}', [UserController::class, 'update'])
     ->name('api.users.update');
 
 
+Route::post('profile',[ProfileController::class, 'store'])
+    ->name('api.profile.store');
 
-//Route::get('register', [UserController::class, 'register'])
-//    ->name('register');
-//
-//Route::post('register', [UserController::class, 'registerRequest'])
-//    ->name('registerRequest');
-//
-//Route::get('login', [UserController::class, 'login'])
-//    ->name('login');
-//
-//Route::post('login', [UserController::class, 'loginRequest'])
-//    ->name('loginRequest');
-//
-//Route::get('dashboard', [UserController::class, 'dashboard'])
-//    ->name('dashboard')
-//    ->middleware('auth');
+Route::get('profile/{id}',[ProfileController::class, 'show'])
+    ->name('api.profile.show');
+
+
+Route::get('user/{id}/profile',[UserController::class, 'getProfile'])
+    ->name('api.profile.show');
+
+
+Route::prefix('tasks')->group(function () {
+    Route::get('index', [TaskController::class, 'index'])->name('api.tasks.index');
+    Route::post('/create', [TaskController::class, 'store'])
+        ->name('api.tasks.store');
+    Route::get('/{id}', [TaskController::class, 'show'])
+        ->name('api.tasks.show')->whereNumber('id');
+    Route::put('/update/{id}', [TaskController::class, 'update'])
+        ->name('api.tasks.update');
+    Route::delete('/delete/{id}', [TaskController::class, 'delete'])->name('api.tasks.delete');
+});
+
 

@@ -29,7 +29,10 @@ class UserController extends Controller
             'password' => Hash::make($request->input('password')),
         ])->only('id', 'name', 'email');
 
-        return response()->json($user, 201);
+        return response()->json([
+            'message' => 'User created successfully',
+            'user' => $user
+        ],201);
     }
 
     public function show(int $id)
@@ -76,4 +79,12 @@ class UserController extends Controller
         return response()->json(['message' => 'User updated successfully', 'user' => $user]);
     }
 
+    public function getProfile($id)
+    {
+        $profile =  User::find($id)->profile()->get();
+        if (!$profile) {
+            return response()->json(['message' => 'Profile not found'], 404);
+        }
+        return response()->json($profile , 200);
+    }
 }

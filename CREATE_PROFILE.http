@@ -1,0 +1,12 @@
+### GET request to example server
+POST http://127.0.0.1:8000/api/profile
+Accept: application/json
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "name": "JohnDoe",
+    "phone": "1234567890"
+}
+
+###
