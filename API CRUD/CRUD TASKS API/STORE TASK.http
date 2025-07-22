@@ -1,11 +1,10 @@
-### GET request to example server
 POST http://127.0.0.1:8000/api/tasks/create
 Accept: application/json
 Content-Type: application/json
 
 {
-  "title": "New Task",
-  "description": "This is a new task created via API.",
-  "status": "completed"
+    "user_id": 1,
+    "title": "STEM API Documentation",
+    "description": "Finish writing documentation for the  0",
+    "status": "completed"
 }
-###

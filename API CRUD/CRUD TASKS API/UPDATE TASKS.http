@@ -1,0 +1,13 @@
+### GET request to example server
+PUT http://127.0.0.1:8000/api/tasks/update/2
+Accept: application/json
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "title": "Updated Task Title",
+    "description": "Updated task description.",
+    "completed": "in_progress"
+}
+
+###

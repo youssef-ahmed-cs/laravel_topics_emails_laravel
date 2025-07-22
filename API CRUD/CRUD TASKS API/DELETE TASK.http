@@ -1,0 +1,4 @@
+### DELETE request to delete a task by ID
+DELETE http://127.0.0.1:8000/api/delete/1
+
+###

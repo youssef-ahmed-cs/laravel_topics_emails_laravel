@@ -38,15 +38,15 @@ Route::get('user/{id}/profile',[UserController::class, 'getProfile'])
     ->name('api.profile.show');
 
 
-Route::prefix('tasks')->group(function () {
-    Route::get('index', [TaskController::class, 'index'])->name('api.tasks.index');
-    Route::post('/create', [TaskController::class, 'store'])
-        ->name('api.tasks.store');
-    Route::get('/{id}', [TaskController::class, 'show'])
-        ->name('api.tasks.show')->whereNumber('id');
-    Route::put('/update/{id}', [TaskController::class, 'update'])
-        ->name('api.tasks.update');
-    Route::delete('/delete/{id}', [TaskController::class, 'delete'])->name('api.tasks.delete');
-});
+Route::get('tasks/index', [TaskController::class, 'index'])->name('api.tasks.index');
+Route::post('tasks/create', [TaskController::class, 'store'])
+    ->name('api.tasks.store');
+Route::get('tasks/{id}', [TaskController::class, 'show'])
+    ->name('api.tasks.show')->whereNumber('id');
+Route::put('tasks/update/{id}', [TaskController::class, 'update'])
+    ->name('api.tasks.update');
+Route::delete('/delete/{id}', [TaskController::class, 'delete'])->name('api.tasks.delete');
+Route::get('tasks/user/{userId}', [TaskController::class, 'getTasksByUser'])
+    ->name('api.tasks.user')->whereNumber('userId');
 
 
