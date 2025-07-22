@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('role')->default('user'); // Default role set to 'user'
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->json('settings')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -14,14 +14,18 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
-            -> constrained('users')->cascadeOnDelete();
+            -> constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('title');
             $table->text('description')->nullable();
             $table->enum('status', ['pending', 'in_progress', 'completed'])->default('pending');
             $table->timestamps();
         });
-    }
 
+//        Schema::table('users', function (Blueprint $table) {
+//            $table->string('title',500);
+//        });
+    }
+    //Schema::rename('old_table_name', 'new_table_name');
     /**
      * Reverse the migrations.
      */
