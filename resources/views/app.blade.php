@@ -4,3 +4,4 @@
 </form>
 
 {!! to_route('receive',['id'=>1]) !!}
+`
