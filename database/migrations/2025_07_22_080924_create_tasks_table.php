@@ -21,11 +21,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-//        Schema::table('users', function (Blueprint $table) {
-//            $table->string('title',500);
-//        });
     }
-    //Schema::rename('old_table_name', 'new_table_name');
     /**
      * Reverse the migrations.
      */

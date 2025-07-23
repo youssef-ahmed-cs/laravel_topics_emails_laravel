@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
@@ -48,5 +52,10 @@ Route::put('tasks/update/{id}', [TaskController::class, 'update'])
 Route::delete('/delete/{id}', [TaskController::class, 'delete'])->name('api.tasks.delete');
 Route::get('tasks/user/{userId}', [TaskController::class, 'getTasksByUser'])
     ->name('api.tasks.user')->whereNumber('userId');
+
+
+Route::fallback(function (){
+    return view('welcome');
+});
 
 
