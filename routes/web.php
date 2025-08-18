@@ -1,25 +1,20 @@
 <?php
 
-use App\Http\Controllers\ImageController;
-use App\Http\Controllers\TaskController;
-
-//use App\Models\student;
-use App\Models\User;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function (User $user) {
-    dd($user->all());
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::post('receive/data/{id}', function ($data) {
-    return 'Your data is received' . $data;
-})->name('receive');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-
-Route::controller(ImageController::class)->group(function () {
-    Route::get('images', 'index')->name('images.index');
-    Route::get('upload', 'create')->name('images.create');
-    Route::post('upload', 'store')->name('images.store');
-    Route::delete('images/{id}', 'destroy')->name('images.destroy');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+require __DIR__.'/auth.php';

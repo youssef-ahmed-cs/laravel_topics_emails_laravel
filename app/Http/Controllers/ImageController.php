@@ -8,14 +8,13 @@ use Illuminate\Support\Facades\Storage;
 
 
 class ImageController extends Controller
-
 {
 
     public function store(Request $request)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]); //  1mgb = 1024 kb
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
 
         $file = $request->file('image'); // Get the uploaded file
         $filename = time() . '.' . $file->getClientOriginalExtension();

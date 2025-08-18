@@ -17,7 +17,6 @@ class FlightFactory extends Factory
             'airline' => $this->faker->company,
             'departure_time' => $this->faker->dateTimeBetween('now', '+1 year'),
             'arrival_time' => $this->faker->dateTimeBetween('+1 hour', '+2 years'),
-            'status' => $this->faker->randomElement(['pending', 'in_progress', 'completed'])
         ];
     }
 }
