@@ -1,0 +1,12 @@
+### Update Book by ID
+PUT {{base_url}}/api/books/1
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+    "title": "Updated Book Title",
+    "description": "This is an updated description for the book",
+    "author_id": 1,
+    "publication_date": "2024-01-15",
+    "isbn": "978-1234567890"
+}

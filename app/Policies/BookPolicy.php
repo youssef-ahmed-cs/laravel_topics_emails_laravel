@@ -24,9 +24,6 @@ class BookPolicy
         return true;
     }
 
-    /**
-     * Determine whether the user can create models.
-     */
     public function create(User $user): bool
     {
         return $user->role == 'admin' || $user->role == 'author';

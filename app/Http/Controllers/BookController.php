@@ -6,8 +6,6 @@ use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use App\Http\Resources\BookResource;
 use App\Models\Book;
-use App\Models\User;
-use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -37,12 +35,15 @@ class BookController extends Controller
     public function update(UpdateBookRequest $request, Book $book)
     {
         $this->authorize('update', $book);
-        $book->update($request->validated());
+        $data = Book::find($book->id);
+        $data->update($request->validated());
+        $data->refresh();
         return response()->json([
             'message' => 'Book updated successfully',
-            'book' => new BookResource($book->load('author'))
+            'book' => new BookResource($data->refresh()->load('author'))
         ]);
     }
+    
 
     public function destroy(Book $book)
     {
