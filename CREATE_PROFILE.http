@@ -1,4 +1,4 @@
-### GET request to example server
+### POST request to create a new profile
 POST http://127.0.0.1:8000/api/profile
 Accept: application/json
 Content-Type: application/json

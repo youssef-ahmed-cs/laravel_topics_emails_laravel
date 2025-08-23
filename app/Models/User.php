@@ -3,11 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use ApiPlatform\Metadata\ApiResource;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+#[ApiResource] # Making the User entity an API resource
 class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -18,11 +20,15 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var list<string>
      */
+    public  $timestamps = false;
     protected $fillable = [
         'name',
         'email',
         'password',
         'role',
+        'phone',
+        'settings',
+        'email_verified_at',
     ];
 
     /**
@@ -55,5 +61,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function tasks()
     {
         return $this->hasMany(Task::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function books()
+    {
+        return $this->hasMany(Book::class, 'author_id');
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Employee;
+use App\Models\SalesOffice;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EmployeeFactory extends Factory
@@ -14,11 +15,7 @@ class EmployeeFactory extends Factory
         return [
 
             'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'phone' => $this->faker->phoneNumber(),
-            'address' => $this->faker->address(),
-            'position' => $this->faker->jobTitle(),
-
+            'sales_office_id' => SalesOffice::factory(),
         ];
     }
 }

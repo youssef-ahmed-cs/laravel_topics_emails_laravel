@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreImageRequest;
 use App\Models\Image;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 
 class ImageController extends Controller
 {
 
-    public function store(Request $request)
+    public function store(StoreImageRequest $request)
     {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+        $request->validated(); // Validate the request using the custom request class
 
         $file = $request->file('image'); // Get the uploaded file
         $filename = time() . '.' . $file->getClientOriginalExtension();

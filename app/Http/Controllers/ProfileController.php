@@ -57,4 +57,14 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function show(string $id)
+    {
+
+    }
+
+    public function store()
+    {
+
+    }
 }

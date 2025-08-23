@@ -11,15 +11,17 @@ class Employee extends Model
     protected $table = 'employees';
     protected $fillable = [
         'name',
-        'email',
-        'phone',
-        'address',
-        'position',
+        'sales_office_id',
+        'manager_id',
     ];
 
+    public function salesOffice()
+    {
+        return $this->belongsTo(SalesOffice::class);
+    }
 
-    public $hidden = [
-        'created_at',
-        'updated_at',
-    ];
+    public function managedOffice()
+    {
+        return $this->hasOne(SalesOffice::class, 'manager_id');
+    }
 }

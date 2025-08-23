@@ -1,0 +1,17 @@
+### POST Store a new book in the library system
+POST 127.0.0.1:8000/api/books
+Accept: application/json
+Content-Type: application/json
+
+{
+    "title": "New Book Title",
+    "author_id": 1,
+    "published_date": "2023-10-01",
+    "isbn": "123456789012",
+    "pages": 300,
+    "cover_image": "http://example.com/image.jpg",
+    "language": "English",
+    "description": "This is a description of the new book."
+}
+
+###

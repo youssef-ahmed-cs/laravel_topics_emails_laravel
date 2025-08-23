@@ -8,11 +8,8 @@ use Illuminate\Database\Seeder;
 
 class EmployeeSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Employee::factory()->count(20)->create();
+        Employee::factory(20)->create();
     }
 }

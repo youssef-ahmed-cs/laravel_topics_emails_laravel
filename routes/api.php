@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
@@ -39,7 +41,7 @@ Route::get('profile/{id}',[ProfileController::class, 'show'])
 
 
 Route::get('user/{id}/profile',[UserController::class, 'getProfile'])
-    ->name('api.profile.show');
+    ->name('api.user.profile.show');
 
 
 Route::get('tasks/index', [TaskController::class, 'index'])->name('api.tasks.index');
@@ -58,4 +60,15 @@ Route::fallback(function (){
     return view('welcome');
 });
 
+
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('user', [AuthController::class, 'user']);
+    Route::post('refresh-token', [AuthController::class, 'refreshToken']);
+
+    Route::apiResource('books', BookController::class);
+});
 
